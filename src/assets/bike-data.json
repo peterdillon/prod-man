@@ -1,0 +1,50 @@
+{
+  "bikes": [
+    {
+      "Schwinn": {
+        "frame_size": 27.5,
+        "tire_size": 22,
+        "weight": 12,
+        "category": "adventure",
+        "gear": "single"
+      },
+      "Trek": {
+        "frame_size": 27.5,
+        "tire_size": 22,
+        "weight": 12,
+        "category": "mountain",
+        "gear": "single"
+      },
+      "Specialized": {
+        "frame_size": 27.5,
+        "tire_size": 22,
+        "weight": 12,
+        "category": "commuter",
+        "gear": "single"
+      },
+      "PUBLIC Bikes": {
+        "frame_size": 27.5,
+        "tire_size": 22,
+        "weight": 12,
+        "category": "electric",
+        "gear": "single"
+      },
+      "State Bicycle Company": {
+        "frame_size": 27.5,
+        "tire_size": 22,
+        "weight": 12,
+        "category": "sport",
+        "gear": "single"
+      },
+      "Priority Bicycles": {
+        "frame_size": 27.5,
+        "tire_size": 22,
+        "weight": 12,
+        "category": "all terrain",
+        "gear": "single"
+      }
+
+  }
+    
+  ],
+}

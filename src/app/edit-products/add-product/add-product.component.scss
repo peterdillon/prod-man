@@ -1,0 +1,42 @@
+
+h1 {
+    margin: 1rem 2rem;
+}
+.mat-mdc-card  {
+    background-color: #efefef;
+}
+mat-card-subtitle {
+    color:darkgrey
+}
+.mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+}
+.mat-mdc-card-content {
+    margin-top: .75rem;
+}
+.card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    justify-items: center;
+    @media (max-width: 850px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    @media (min-width: 1250px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 1251px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (min-width: 1700px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.example-card {
+    max-width: 400px;
+}
+.example-header-image {
+    background-image: url('../../../assets/bike.webp');
+    background-size: cover;
+}
+  
