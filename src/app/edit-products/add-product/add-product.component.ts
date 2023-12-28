@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-add-product',
@@ -6,6 +7,16 @@ import { Component } from '@angular/core';
   styleUrl: './add-product.component.scss'
 })
 export class AddProductComponent {
+
+  users: any[] = [];
+  constructor(private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe(data => {
+      this.users = data;
+    });
+    console.log(this.users);
+  }
 
   cards = [
     {title: 'Specialized', content: 'Description:'},

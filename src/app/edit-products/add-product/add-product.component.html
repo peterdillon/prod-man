@@ -10,6 +10,8 @@
   </mat-grid-tile>
 </mat-grid-list>  -->
 
+<li *ngFor="let item of users">{{ item.name }}</li>
+
 <mat-grid-list cols="1" gutterSize="1rem">
 <div class="card-wrapper">
     <mat-card *ngFor="let card of cards" class="example-card">
