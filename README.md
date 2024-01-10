@@ -1,27 +1,15 @@
 # ProductManager
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+To begin, clone to a local folder of your choice and use command `npm install`
 
-## Development server
+## Run Local Development Server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm run start` to serve and open browser.
 
-## Code scaffolding
+## Run Json Server (As Local DB)
+Use command `npm run json-run`. This is a functional local database, so edits and deletes will change the data.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Other Libraries
+I chose Angular Material Design for the frontend UI library.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
