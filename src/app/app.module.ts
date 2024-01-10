@@ -14,13 +14,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 
 import { AddProductComponent } from './edit-products/add-product/add-product.component';
-import { DeleteProductComponent } from './edit-products/delete-product/delete-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddProductComponent,
-    DeleteProductComponent
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

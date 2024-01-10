@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { UserService } from '../../user.service';
+import { Bikes } from '../shared/bikes.model';
+import { BikesService } from '../shared/bikes.service';
 
 @Component({
   selector: 'app-add-product',
@@ -8,21 +9,13 @@ import { UserService } from '../../user.service';
 })
 export class AddProductComponent {
 
-  users: any[] = [];
-  constructor(private userService: UserService) { }
+  bikes: Bikes[] = [];
+  constructor(private bikesService: BikesService) { }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(data => {
-      this.users = data;
+    this.bikesService.getUsers().subscribe((data: Bikes[]) => {
+      this.bikes = data;
     });
-    console.log(this.users);
   }
-
-  cards = [
-    {title: 'Specialized', content: 'Description:'},
-    {title: 'Schwinn', content: 'Description:'},
-    {title: 'Trek', content: 'Description:'},
-    {title: 'PUBLIC Bikes', content: 'Description:'}
-  ];
 
 }

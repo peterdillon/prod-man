@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
  providedIn: 'root'
 })
 
-export class UserService {
+export class BikesService {
  url = 'http://localhost:3000';
  
  constructor(private http: HttpClient) { }
  
  getUsers(): Observable<any> {
-   return this.http.get(this.url + '/users');
+   return this.http.get(this.url + '/bikes');
  }
 }

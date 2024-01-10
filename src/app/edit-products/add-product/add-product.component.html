@@ -1,27 +1,16 @@
-<h1>Products</h1>
-<!-- <mat-grid-list cols="4" gutterSize="1rem">
-  <mat-grid-tile *ngFor="let card of cards">
-    <mat-card class="my-card">
-      <mat-card-title>{{card.title}}</mat-card-title>
-      <mat-card-content>
-         {{card.content}}
-      </mat-card-content>
-    </mat-card> 
-  </mat-grid-tile>
-</mat-grid-list>  -->
-<li *ngFor="let item of users">{{ item.name }}</li>
 
+<h1>Products</h1>
 <mat-grid-list cols="1" gutterSize="1rem">
-<div class="card-wrapper">
-    <mat-card *ngFor="let card of cards" class="example-card">
+  <div class="card-wrapper">
+    <mat-card *ngFor="let bike of bikes" class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{card.title}}</mat-card-title>
-          <mat-card-subtitle>bike</mat-card-subtitle>
+          <mat-card-title>{{ bike.name }}</mat-card-title>
+          <mat-card-subtitle>{{ bike.description }}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="../../../assets/bike.webp" alt="Photo of a Shiba Inu">
+        <img mat-card-image src="{{ bike.image }}" alt="Product image">
         <mat-card-content>
-          <p>{{card.content}}</p>
+          <p class="desc">{{ bike.type }}</p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-flat-button color="primary">EDIT</button>
@@ -29,5 +18,4 @@
         </mat-card-actions>
       </mat-card>
     </div>
-    
 </mat-grid-list> 
