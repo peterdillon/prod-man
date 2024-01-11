@@ -1,59 +1,84 @@
 {
   "bikes": [
     {
-        "name": "Schwinn",
-        "id": 0,
-        "description": 27.5,
-        "rating": 22,
-        "price": 12,
-        "quantity": "multi",
-        "type": "adventure",
-        "image": "../../../assets/bike.webp"
-      },{
-        "name": "TREK",
-        "id": 1,
-        "description": 27.5,
-        "rating": 22,
-        "price": 12,
-        "quantity": "multi",
-        "type": "adventure",
-        "image": "../../../assets/bike.webp"
-      },{
-        "name": "Specialized",
-        "id": 2,
-        "description": 27.5,
-        "rating": 22,
-        "price": 12,
-        "quantity": "multi",
-        "type": "adventure",
-        "image": "../../../assets/bike.webp"
-      },{
-        "name": "PUBLIC Bikes",
-        "id": 3,
-        "description": 27.5,
-        "rating": 22,
-        "price": 12,
-        "quantity": "multi",
-        "type": "adventure",
-        "image": "../../../assets/bike.webp"
-      },{
-        "name": "State Bicycle Company",
-        "id": 4,
-        "description": 27.5,
-        "rating": 22,
-        "price": 12,
-        "quantity": "multi",
-        "type": "adventure",
-        "image": "../../../assets/bike.webp"
-      },{
-        "name": "Priority Bicycles",
-        "id": 5,
-        "description": 27.5,
-        "rating": 22,
-        "price": 12,
-        "quantity": "multi",
-        "type": "adventure",
-        "image": "../../../assets/bike.webp"
-      }    
+      "name": "Schwinn",
+      "id": 0,
+      "description": 27.5,
+      "rating": 22,
+      "price": 12,
+      "quantity": "multi",
+      "type": "adventure",
+      "image": "../../../assets/bike.webp"
+    },
+    {
+      "name": "TREK",
+      "id": 1,
+      "description": 27.5,
+      "rating": 22,
+      "price": 12,
+      "quantity": "multi",
+      "type": "adventure",
+      "image": "../../../assets/bike.webp"
+    },
+    {
+      "name": "Specialized",
+      "id": 2,
+      "description": 27.5,
+      "rating": 22,
+      "price": 12,
+      "quantity": "multi",
+      "type": "adventure",
+      "image": "../../../assets/bike.webp"
+    },
+    {
+      "name": "PUBLIC Bikes",
+      "id": 3,
+      "description": 27.5,
+      "rating": 22,
+      "price": 12,
+      "quantity": "multi",
+      "type": "adventure",
+      "image": "../../../assets/bike.webp"
+    },
+    {
+      "name": "State Bicycle Company",
+      "id": 4,
+      "description": 27.5,
+      "rating": 22,
+      "price": 12,
+      "quantity": "multi",
+      "type": "adventure",
+      "image": "../../../assets/bike.webp"
+    },
+    {
+      "name": "Priority Bicycles",
+      "id": 5,
+      "description": 27.5,
+      "rating": 22,
+      "price": 12,
+      "quantity": "multi",
+      "type": "adventure",
+      "image": "../../../assets/bike.webp"
+    },
+    {
+      "id": "10",
+      "name": "hello",
+      "description": "xv ds dfs dfsd ",
+      "rating": "10",
+      "price": "10",
+      "quantity": "100",
+      "type": "10",
+      "image": "../../../assets/bike.webp"
+    },
+    {
+      "id": "22",
+      "name": "Specialized",
+      "description": 27.5,
+      "rating": 22,
+      "price": 12,
+      "quantity": "multi",
+      "type": "adventure",
+      "image": "../../../assets/bike.webp"
+    }
   ]
 }

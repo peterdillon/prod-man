@@ -9,12 +9,20 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <a mat-menu-item routerLink="/add-product" routerLinkActive="active-link">
+      <a mat-menu-item routerLink="/view-product">
         <mat-icon>edit_circle</mat-icon> View/Edit Products
+      </a>
+      <a mat-menu-item routerLink="/create-product">
+        <mat-icon>add_circle</mat-icon> Create Product
       </a>
     </mat-menu>
     <span>Product Manager</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+
+  <router-outlet></router-outlet>
+
+<div class="footer" color="primary">
+  Product management demo app, by Peter Dillon 2024. 
+</div>

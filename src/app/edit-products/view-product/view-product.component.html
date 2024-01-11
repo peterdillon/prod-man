@@ -11,10 +11,12 @@
         <img mat-card-image src="{{ bike.image }}" alt="Product image">
         <mat-card-content>
           <p class="desc">{{ bike.type }}</p>
+          <p class="desc">{{ bike.id }}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-flat-button color="primary">EDIT</button>
-          <button mat-flat-button color="warn">DELETE</button>
+          <button mat-flat-button color="primary" (click)="editProduct(bike.id)">EDIT</button>
+          <button mat-flat-button color="warn" (click)="confirmCancelDialog(bike.id)">DELETE</button>
+          <!-- (click)="delete(bike.id)" -->
         </mat-card-actions>
       </mat-card>
     </div>
