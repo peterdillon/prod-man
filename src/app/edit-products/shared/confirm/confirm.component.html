@@ -1,10 +1,16 @@
 <div class="header">
-    <h2 mat-dialog-title>Title</h2>
-    <div mat-dialog-content>Delete this product?</div>
-    <div mat-dialog-actions [align]="'end'">
-        <button mat-raised-button [mat-dialog-close]="false">No</button>
-        <button mat-raised-button color="primary" [mat-dialog-close]="true">
-          Yes
-        </button>
-      </div>
-  </div>
+  <h2 mat-dialog-title>{{ data.title }}</h2>
+</div>
+
+<div mat-dialog-content>
+  <p>{{ data.message }}</p>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button [mat-dialog-close]="false">
+      {{ data.cancelCaption }}
+  </button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true">
+      {{ data.confirmCaption }}
+  </button>
+</div>

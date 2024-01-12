@@ -1,44 +1,39 @@
 <div class="formContainer">
     <h1>{{ title }} Product</h1>
-<form [formGroup]="createProductForm" (ngSubmit)="saveProduct()">
-    <mat-form-field appearance="outline">
-        <mat-label>ID</mat-label>
-        <input matInput formControlName="id">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Description</mat-label>
-        <input matInput formControlName="description">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Rating</mat-label>
-        <input matInput formControlName="rating">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Price</mat-label>
-        <input matInput formControlName="price">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Quantity</mat-label>
-        <input matInput formControlName="quantity">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>type</mat-label>
-        <input matInput formControlName="type">
-    </mat-form-field>
-    <br>
-    <div>
-      <button mat-flat-button class="right group" color="primary" type="submit" [disabled]="createProductForm.invalid">Save</button>
-      <button mat-flat-button class="left secondary" (click)="cancel()">Cancel</button>
-    </div>
-  </form>
-
+    <form [formGroup]="createProductForm">
+        <mat-form-field appearance="outline">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Rating</mat-label>
+            <input matInput formControlName="rating">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput formControlName="price">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input matInput formControlName="quantity">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>type</mat-label>
+            <input matInput formControlName="type">
+        </mat-form-field>
+        <br>
+        <div>
+            <button *ngIf="newProduct" mat-flat-button class="right group" color="primary" (click)="saveNewProduct()" type="submit" [disabled]="createProductForm.invalid">Save New</button>
+            <button *ngIf="!newProduct" mat-flat-button class="right group" color="primary" (click)="saveEditedProduct()" type="submit" [disabled]="createProductForm.invalid">Save Edited</button>
+            <button mat-flat-button class="left secondary" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
 </div>
-  <!-- <mat-select required formControlName="extension">
-              <mat-option *ngFor="let extension of extensionItems" [value]="extension.value">
-                {{ extension.name }}
-              </mat-option>
-            </mat-select> -->

@@ -5,18 +5,17 @@
     <mat-card *ngFor="let bike of bikes" class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{ bike.name }}</mat-card-title>
-          <mat-card-subtitle>{{ bike.description }}</mat-card-subtitle>
+          <mat-card-title>(ID:{{ bike.id }}) {{ bike.name }}</mat-card-title>
+          <mat-card-subtitle>Qty in stock: {{ bike.quantity }} - Rating: {{ bike.rating }}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="{{ bike.image }}" alt="Product image">
         <mat-card-content>
-          <p class="desc">{{ bike.type }}</p>
-          <p class="desc">{{ bike.id }}</p>
+          <p class="desc">{{ bike.type }} - ${{ bike.price }}</p>
+          <p class="desc">{{ bike.description }}</p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-flat-button color="primary" (click)="editProduct(bike.id)">EDIT</button>
           <button mat-flat-button color="warn" (click)="confirmCancelDialog(bike.id)">DELETE</button>
-          <!-- (click)="delete(bike.id)" -->
         </mat-card-actions>
       </mat-card>
     </div>

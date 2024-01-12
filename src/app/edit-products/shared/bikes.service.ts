@@ -9,7 +9,7 @@ import { Bikes } from '../shared/bikes.model';
 export class BikesService {
 
  url = 'http://localhost:3000';
- 
+
  constructor(private http: HttpClient) { }
  
   getProducts(): Observable<any> {
@@ -28,8 +28,8 @@ export class BikesService {
     return this.http.get<Bikes>(this.url + '/bikes/' + id);
   }
 
-  update(payload:Bikes) {
-    return this.http.put(this.url + '/bikes/' + payload.id, payload);
+  update(id:number, payload:Bikes) {
+    return this.http.put(this.url + '/bikes/' + id, payload);
   }
 
 }

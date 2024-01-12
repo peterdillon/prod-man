@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BikesService } from '../shared/bikes.service';
+import { DialogService } from '../shared/dialog.service';
 
 @Component({
   selector: 'app-create-update-product',
@@ -14,19 +15,22 @@ export class CreateProductComponent implements OnInit {
   url = 'http://localhost:3000';
   routeID: any;
   title = '';
+  newProduct = true;
 
   constructor( private fb: FormBuilder,
                private router: Router,
                private route: ActivatedRoute,
-               private bikesService: BikesService ) { }
+               private bikesService: BikesService,
+               private dialog: DialogService  ) { }
 
   ngOnInit() {
     this.title = 'Creat New';
     this.initCreateProductForm();
     if (this.route.snapshot.paramMap.get('id')) {
       this.title = 'Edit';
+      this.newProduct = false;
       this.routeID = this.route.snapshot.paramMap.get('id');
-      this.getById(this.routeID);
+      this.initEditProductForm(this.routeID);
     }
   }
 
@@ -34,7 +38,7 @@ export class CreateProductComponent implements OnInit {
     this.router.navigate(["/view-product"])
   }
 
-  saveProduct() {
+  saveNewProduct() {
     this.bikesService.create(this.createProductForm.value)
     .subscribe({
       next:(data: any) => {
@@ -42,15 +46,44 @@ export class CreateProductComponent implements OnInit {
       },
       error:(err: any) => {
         console.log(err);
+        if (err.status === 500) {
+          this.msgDialog();
+        }
       }
     })
   }
+
+  saveEditedProduct() {
+    this.bikesService.update(this.routeID, this.createProductForm.value)
+    .subscribe({
+      next:(data: any) => {
+        this.router.navigate(["/view-product"]);
+      },
+      error:(err: any) => {
+        console.log(err);
+      }
+    })
+  }
+
+  msgDialog() {
+    this.dialog
+      .confirmDialog({
+        title: 'ID already exists!',
+        message: 'Please update ID to save this product.',
+        confirmCaption: 'Okay',
+        cancelCaption: 'Cancel',
+      })
+      .subscribe((yes) => {
+        if (yes) {
+          console.log('Confirmed.');
+        }
+      });
+  }
   
-  getById(id: any) {
+  initEditProductForm(id: any) {
     this.bikesService.getById(this.routeID).subscribe((data: any) => {
-      console.log('in getBy' + data);
       this.createProductForm = this.fb.group({
-        id: [data.id],
+        id: [{value: data.id, disabled: true}],
         name: [data.name, Validators.required],
         description: [data.description],
         rating: [data.rating],
@@ -62,18 +95,6 @@ export class CreateProductComponent implements OnInit {
     });
   }
  
-  update() {
-    this.bikesService.update(this.createProductForm.value)
-    .subscribe({
-      next:(data: any) => {
-        this.router.navigate(["/bikes"]);
-      },
-      error:(err: any) => {
-        console.log(err);
-      }
-    })
-  }
-
   initCreateProductForm(): void {
     this.createProductForm = this.fb.group({
       id: [''],

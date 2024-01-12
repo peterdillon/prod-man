@@ -38,15 +38,15 @@ export class ViewProductComponent {
   confirmCancelDialog(id:number) {
     this.dialog
       .confirmDialog({
-        title: 'Confirm Action',
-        message: 'Do you want to confirm this action?',
+        title: 'Confirm Deletion',
+        message: 'Do you want to permanently delete this product?',
         confirmCaption: 'Confirm',
         cancelCaption: 'Cancel',
       })
       .subscribe((confirmed) => {
         if (confirmed) {
           this.delete(id);
-          console.log('The user confirmed the action');
+          console.log('Deleting product...');
         }
       });
   }
