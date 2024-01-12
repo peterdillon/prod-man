@@ -14,7 +14,7 @@
     {
       "name": "Tommaso",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "rating": 15,
+      "rating": "155",
       "price": "799",
       "quantity": 110,
       "type": "adventure",
