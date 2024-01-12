@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,13 +21,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ViewProductComponent } from './edit-products/view-product/view-product.component';
 import { CreateProductComponent } from './edit-products/create-update-product/create-update-product.component';
 import { ConfirmComponent } from './edit-products/shared/confirm/confirm.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewProductComponent,
     CreateProductComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,9 @@ import { ConfirmComponent } from './edit-products/shared/confirm/confirm.compone
     MatInputModule,
     MatFormFieldModule
   ],
-  providers: [],
+  providers: [
+    provideClientHydration()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
