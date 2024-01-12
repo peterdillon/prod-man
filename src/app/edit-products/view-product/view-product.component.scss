@@ -36,11 +36,20 @@ mat-card-subtitle {
         grid-template-columns: repeat(4, 1fr);
     }
 }
-.example-card {
+.card-ct {
     max-width: 400px;
+    display: flex;
 }
-.example-header-image {
-    background-image: url('../../../assets/bike.webp');
+.fill {
+    flex: 1;
+  }
+
+  .id-ct {
+    margin-left: .5rem;
+    text-align: center;
+  }
+
+.card-header-image {
     background-size: cover;
 }
   

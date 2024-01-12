@@ -90,7 +90,8 @@ export class CreateProductComponent implements OnInit {
         price: [data.price],
         quantity: [data.quantity],
         type: [data.type],
-        image: ['../../../assets/bike.webp', ],
+        image: [data.image],
+        logo: [data.logo]
       });
     });
   }
@@ -104,7 +105,8 @@ export class CreateProductComponent implements OnInit {
       price: [''],
       quantity: [''],
       type: [''],
-      image: ['../../../assets/bike.webp', ],
+      image: [''],
+      logo: [''],
     });
   }
 

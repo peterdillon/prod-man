@@ -8,16 +8,18 @@
       "price": 1200,
       "quantity": 100,
       "type": "street",
-      "image": "../../../assets/bike.webp"
+      "image": "../../../assets/bike.webp",
+      "logo": "../../../assets/schwinn.webp"
     },
     {
-      "name": "TREK",
+      "name": "Tommaso",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "rating": 15,
-      "price": 800,
+      "price": "799",
       "quantity": 110,
       "type": "adventure",
       "image": "../../../assets/bike.webp",
+      "logo": "../../../assets/Tommaso.png",
       "id": 1
     },
     {
@@ -28,47 +30,63 @@
       "quantity": 130,
       "type": "all terrain",
       "image": "../../../assets/bike.webp",
+      "logo": "../../../assets/Specialized.png",
       "id": 2
     },
     {
-      "name": "PUBLIC Bikes",
-      "id": 3,
+      "name": "Colnago Bikes",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "rating": 20,
       "price": 1854,
       "quantity": 40,
       "type": "mountain",
-      "image": "../../../assets/bike.webp"
+      "image": "../../../assets/bike.webp",
+      "logo": "../../../assets/Colnago-Bikes.png",
+      "id": 3
     },
     {
-      "name": "State Bicycle Company",
+      "name": "SCOTT",
       "id": 4,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "rating": 6,
       "price": 659,
       "quantity": 10,
       "type": "hybrid",
-      "image": "../../../assets/bike.webp"
+      "image": "../../../assets/bike.webp",
+      "logo": "../../../assets/SCOTT.png"
     },
     {
-      "name": "Priority Bicycles",
-      "id": 5,
+      "name": "Rocky Mountain Bicycles",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "rating": 16,
       "price": 399,
       "quantity": 100,
       "type": "electric",
-      "image": "../../../assets/bike.webp"
+      "image": "../../../assets/bike.webp",
+      "logo": "../../../assets/Rocky-Mountain-Bicycles.png",
+      "id": 5
     },
     {
-      "id": "22",
-      "name": "asdasd",
+      "name": "Merida",
       "description": "",
       "rating": "",
       "price": "",
       "quantity": "",
       "type": "",
-      "image": "../../../assets/bike.webp"
+      "image": "../../../assets/bike.webp",
+      "logo": "../../../assets/Merida.png",
+      "id": "22"
+    },
+    {
+      "name": "Norco",
+      "description": "12",
+      "rating": "12",
+      "price": "12",
+      "quantity": "12",
+      "type": "12",
+      "image": "../../../assets/bike.webp",
+      "logo": "../../../assets/Norco-Bicycles.png",
+      "id": "12"
     }
   ]
 }

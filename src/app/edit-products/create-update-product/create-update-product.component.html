@@ -29,6 +29,14 @@
             <mat-label>type</mat-label>
             <input matInput formControlName="type">
         </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Image</mat-label>
+            <input matInput formControlName="image">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Logo</mat-label>
+            <input matInput formControlName="logo">
+        </mat-form-field>
         <br>
         <div>
             <button *ngIf="newProduct" mat-flat-button class="right group" color="primary" (click)="saveNewProduct()" type="submit" [disabled]="createProductForm.invalid">Save New</button>

@@ -7,6 +7,7 @@ export interface Bikes {
     quantity: number;
     type: string;
     image: string;
+    logo: string;
 }
 
 
