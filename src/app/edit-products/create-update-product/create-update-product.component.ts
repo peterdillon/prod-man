@@ -24,7 +24,7 @@ export class CreateProductComponent implements OnInit {
                private dialog: DialogService  ) { }
 
   ngOnInit() {
-    this.title = 'Creat New';
+    this.title = 'Create New';
     this.initCreateProductForm();
     if (this.route.snapshot.paramMap.get('id')) {
       this.title = 'Edit';
@@ -69,9 +69,9 @@ export class CreateProductComponent implements OnInit {
     this.dialog
       .confirmDialog({
         title: 'ID already exists!',
-        message: 'Please update ID to save this product.',
+        message: 'Please change ID to save this product.',
         confirmCaption: 'Okay',
-        cancelCaption: 'Cancel',
+        hasCancelButton: false
       })
       .subscribe((yes) => {
         if (yes) {

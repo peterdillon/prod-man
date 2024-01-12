@@ -12,13 +12,13 @@
     },
     {
       "name": "TREK",
-      "id": 1,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "rating": 15,
       "price": 800,
       "quantity": 110,
       "type": "adventure",
-      "image": "../../../assets/bike.webp"
+      "image": "../../../assets/bike.webp",
+      "id": 1
     },
     {
       "name": "Specialized",
@@ -58,6 +58,16 @@
       "price": 399,
       "quantity": 100,
       "type": "electric",
+      "image": "../../../assets/bike.webp"
+    },
+    {
+      "id": "22",
+      "name": "asdasd",
+      "description": "",
+      "rating": "",
+      "price": "",
+      "quantity": "",
+      "type": "",
       "image": "../../../assets/bike.webp"
     }
   ]
