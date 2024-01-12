@@ -12,7 +12,7 @@ export class BikesService {
 
  constructor(private http: HttpClient) { }
  
-  getProducts(): Observable<any> {
+  getAllProducts(): Observable<any> {
     return this.http.get(this.url + '/bikes');
   }
 

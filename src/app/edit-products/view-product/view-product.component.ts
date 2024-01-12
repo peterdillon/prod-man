@@ -18,7 +18,7 @@ export class ViewProductComponent {
                private dialog: DialogService ) { }
 
   ngOnInit(): void {
-    this.bikesService.getProducts().subscribe((data: Bikes[]) => {
+    this.bikesService.getAllProducts().subscribe((data: Bikes[]) => {
       this.bikes = data;
     });
   }
