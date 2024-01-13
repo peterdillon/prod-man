@@ -1,5 +1,5 @@
 export interface Bikes {
-    id: number;
+    id: string;
     name: string;
     description: string;
     rating: number;

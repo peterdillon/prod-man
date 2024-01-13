@@ -4,6 +4,10 @@ import { BikesService } from '../shared/bikes.service';
 import { Router } from '@angular/router';
 import { DialogService } from '../shared/dialog.service';
 
+import { DocumentData, QuerySnapshot } from '@firebase/firestore';
+import { FirebaseService } from '../shared/firebase.service';
+
+
 @Component({
   selector: 'app-view-product',
   templateUrl: './view-product.component.html',
@@ -12,30 +16,62 @@ import { DialogService } from '../shared/dialog.service';
 export class ViewProductComponent {
 
   bikes: Bikes[] = [];
+  bikeDetails = {
+    name: ''
+  }
+  bikeCollectiondata: { 
+    id: string;
+    name: string;
+    description: string;
+    rating: number;
+    price: number;
+    quantity: number;
+    type: string;
+    image: string;  }[] | any = [];
 
   constructor( private bikesService: BikesService,
                private router: Router,
-               private dialog: DialogService ) { }
+               private dialog: DialogService,
+               private firebaseService: FirebaseService  ) { }
 
   ngOnInit(): void {
-    this.bikesService.getAllProducts().subscribe((data: Bikes[]) => {
-      this.bikes = data;
-    });
+    // this.bikesService.getAllProducts().subscribe((data: Bikes[]) => {
+    //   this.bikes = data;
+    // });
+    this.get();
+    this.firebaseService.obsr_UpdatedSnapshot.subscribe((snapshot) => {
+      this.updateBikeCollection(snapshot);
+    })
+  }
+  //================================
+  async get() {
+    const snapshot = await this.firebaseService.getBikes();
+    this.updateBikeCollection(snapshot);
+  }
+  updateBikeCollection(snapshot: QuerySnapshot<DocumentData>) {
+    this.bikeCollectiondata = [];
+    snapshot.docs.forEach((Bike) => {
+      this.bikeCollectiondata.push({ ...Bike.data(), id: Bike.id });
+    })
   }
 
-  editProduct(id:number) {
-    this.router.navigate(["/edit-product/" + id])
-  }
 
-  delete(id:number) {
-    this.bikesService.delete(id).subscribe({
-      next: (data) => {
-        this.bikes = this.bikes.filter(x => x.id != id)
-      },
-    });
-  }
 
-  confirmCancelDialog(id:number) {
+  // -------------------------------
+
+  // editProduct(id:string) {
+  //   this.router.navigate(["/edit-product/" + id])
+  // }
+
+  // delete(id:string) {
+  //   this.bikesService.delete(id).subscribe({
+  //     next: (data) => {
+  //       this.bikes = this.bikes.filter(x => x.id != id)
+  //     },
+  //   });
+  // }
+
+  confirmCancelDialog(id:string) {
     this.dialog
       .confirmDialog({
         title: 'Confirm Deletion',

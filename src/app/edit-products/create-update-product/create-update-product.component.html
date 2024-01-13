@@ -1,4 +1,30 @@
-<div class="formContainer">
+
+<h1>Add bike</h1>
+<form class="add">
+    <label for="name">Name</label>
+    <input type="text" name="name" required [(ngModel)]="bikeDetails.name" />
+
+    <button type="button" (click)="add()">Add</button>
+</form>
+<br>
+<br>
+
+<h1>bike List</h1>
+<div class="show">
+    <ng-container *ngFor="let bike of bikeCollectiondata">
+        <div>
+            <label for="name-show">Name</label>
+            <input type="text" name="name-show" [value]="bike.name" required #name>
+
+            <button type="button" (click)="delete(bike.id)">Delete</button>
+            <button type="button" (click)="update(bike.id, name)">Update</button>
+        </div>
+        <br>
+    </ng-container>
+</div>
+
+
+<!-- <div class="formContainer">
     <h1>{{ title }} Product</h1>
     <form [formGroup]="createProductForm">
         <mat-form-field appearance="outline">
@@ -44,4 +70,4 @@
             <button mat-flat-button class="left secondary" (click)="cancel()">Cancel</button>
         </div>
     </form>
-</div>
+</div> -->
