@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { Firestore, getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, DocumentData, CollectionReference, onSnapshot, QuerySnapshot } from 'firebase/firestore';
+import { Firestore, getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, DocumentData, CollectionReference, onSnapshot, QuerySnapshot, getDoc } from 'firebase/firestore';
 import { Subject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
@@ -19,8 +19,6 @@ export class FirebaseService {
     initializeApp(environment.firebase);
     this.db = getFirestore();
     this.bikes = collection(this.db, 'bikes');
-
-    // Get Realtime Data
     onSnapshot(this.bikes, (snapshot) => {
       this.updatedSnapshot.next(snapshot);
     }, (err) => {
@@ -33,22 +31,22 @@ export class FirebaseService {
     return snapshot;
   }
 
-  async addBike(name: string) {
+  async addBike(name: string, description: string, rating: string, price: number, quantity: number, type: string, image: string, logo: string) {
     await addDoc(this.bikes, {
-      name
+      name, description, rating, price, quantity, type, image, logo 
     })
     return;
   }
 
   async deleteBike(docId: string) {
-    const docRef = doc(this.db, 'bikes', docId)
+    const docRef = doc(this.db, 'bikes', docId);
     await deleteDoc(docRef);
     return;
   }
 
-  async updateBike(docId: string, name: string) {
+  async updateBike(docId: string, name: string, description: string, rating: string, price: number, quantity: number, type: string, image: string, logo: string) {
     const docRef = doc(this.db, 'bikes', docId);
-    await updateDoc(docRef, { name })
+    await updateDoc(docRef, { name, description, rating, price, quantity, type, image, logo })
     return;
   }
 }

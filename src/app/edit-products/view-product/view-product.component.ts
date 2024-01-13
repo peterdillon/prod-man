@@ -3,10 +3,8 @@ import { Bikes } from '../shared/bikes.model';
 import { BikesService } from '../shared/bikes.service';
 import { Router } from '@angular/router';
 import { DialogService } from '../shared/dialog.service';
-
 import { DocumentData, QuerySnapshot } from '@firebase/firestore';
 import { FirebaseService } from '../shared/firebase.service';
-
 
 @Component({
   selector: 'app-view-product',
@@ -35,9 +33,6 @@ export class ViewProductComponent {
                private firebaseService: FirebaseService  ) { }
 
   ngOnInit(): void {
-    // this.bikesService.getAllProducts().subscribe((data: Bikes[]) => {
-    //   this.bikes = data;
-    // });
     this.get();
     this.firebaseService.obsr_UpdatedSnapshot.subscribe((snapshot) => {
       this.updateBikeCollection(snapshot);
@@ -54,24 +49,16 @@ export class ViewProductComponent {
       this.bikeCollectiondata.push({ ...Bike.data(), id: Bike.id });
     })
   }
-
-
-
   // -------------------------------
+  editProduct(id:string) {
+    this.router.navigate(["/edit-product/" + id])
+  }
 
-  // editProduct(id:string) {
-  //   this.router.navigate(["/edit-product/" + id])
-  // }
+  async delete(docId: string) {
+    await this.firebaseService.deleteBike(docId);
+  }
 
-  // delete(id:string) {
-  //   this.bikesService.delete(id).subscribe({
-  //     next: (data) => {
-  //       this.bikes = this.bikes.filter(x => x.id != id)
-  //     },
-  //   });
-  // }
-
-  confirmCancelDialog(id:string) {
+  confirmDeleteDialog(id:string) {
     this.dialog
       .confirmDialog({
         title: 'Confirm Deletion',
@@ -83,9 +70,7 @@ export class ViewProductComponent {
       .subscribe((confirmed) => {
         if (confirmed) {
           this.delete(id);
-          console.log('Deleting product...');
         }
-      });
+    });
   }
-
 }

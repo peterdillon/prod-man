@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BikesService } from '../shared/bikes.service';
 import { DialogService } from '../shared/dialog.service';
-
-import { DocumentData, QuerySnapshot } from '@firebase/firestore';
+import { Firestore, getFirestore, doc,  DocumentData, QuerySnapshot, getDoc } from 'firebase/firestore';
 import { FirebaseService } from '../shared/firebase.service';
 
 @Component({
@@ -14,145 +12,117 @@ import { FirebaseService } from '../shared/firebase.service';
 })
 export class CreateProductComponent implements OnInit {
 
+  db: Firestore;
   createProductForm!: FormGroup;
-  // url = 'http://localhost:3000';
   routeID: any;
   title = '';
   newProduct = true;
-
-  bikeDetails = {
-    name: ''
-  }
   bikeCollectiondata: { id: string, name: string}[] | any = [];
 
   constructor( private fb: FormBuilder,
                private router: Router,
                private route: ActivatedRoute,
-               private bikesService: BikesService,
                private dialog: DialogService,
-               private firebaseService: FirebaseService  ) { }
-            
-              ngOnInit(): void {
-                this.get();
-                this.firebaseService.obsr_UpdatedSnapshot.subscribe((snapshot) => {
-                  this.updateBikeCollection(snapshot);
-                })
+               private firebaseService: FirebaseService ) { 
+                this.db = getFirestore();
               }
             
-              async add() {
-                const { name } = this.bikeDetails;
-                await this.firebaseService.addBike(name );
-                this.bikeDetails.name = "";
-              }
-            
-              async get() {
-                const snapshot = await this.firebaseService.getBikes();
-                this.updateBikeCollection(snapshot);
-              }
-            
-              updateBikeCollection(snapshot: QuerySnapshot<DocumentData>) {
-                this.bikeCollectiondata = [];
-                snapshot.docs.forEach((Bike) => {
-                  this.bikeCollectiondata.push({ ...Bike.data(), id: Bike.id });
-                })
-              }
-            
-              async delete(docId: string) {
-                await this.firebaseService.deleteBike(docId);
-              }
-            
-              async update(docId: string, name: HTMLInputElement) {
-                await this.firebaseService.updateBike(docId, name.value);
-              }
-            
+  ngOnInit(): void {
+    this.get();
+    this.firebaseService.obsr_UpdatedSnapshot.subscribe((snapshot) => {
+      this.updateBikeCollection(snapshot);
+    })
 
+    this.title = 'Create New';
+    this.initCreateProductForm();
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.title = 'Edit';
+      this.newProduct = false;
+      this.routeID = this.route.snapshot.paramMap.get('id');
+      this.initEditProductForm();
+    }
+  }
 
+  async saveNewProduct() {
+    await this.firebaseService.addBike(
+      this.createProductForm.get('name')?.value,
+      this.createProductForm.get('description')?.value,
+      this.createProductForm.get('rating')?.value,
+      this.createProductForm.get('price')?.value,
+      this.createProductForm.get('quantity')?.value,
+      this.createProductForm.get('type')?.value,
+      this.createProductForm.get('image')?.value,
+      this.createProductForm.get('logo')?.value
+      );
+      this.router.navigate(["/view-product"]);
+  }
 
-  // ngOnInit() {
-  //   this.title = 'Create New';
-  //   this.initCreateProductForm();
-  //   if (this.route.snapshot.paramMap.get('id')) {
-  //     this.title = 'Edit';
-  //     this.newProduct = false;
-  //     this.routeID = this.route.snapshot.paramMap.get('id');
-  //     this.initEditProductForm(this.routeID);
-  //   }
-  // }
+  async get() {
+    const snapshot = await this.firebaseService.getBikes();
+    this.updateBikeCollection(snapshot);
+  }
 
-  // cancel() { 
-  //   this.router.navigate(["/view-product"])
-  // }
+  updateBikeCollection(snapshot: QuerySnapshot<DocumentData>) {
+    this.bikeCollectiondata = [];
+    snapshot.docs.forEach((Bike) => {
+      this.bikeCollectiondata.push({ ...Bike.data(), id: Bike.id });
+    })
+  }
 
-  // saveNewProduct() {
-  //   this.bikesService.create(this.createProductForm.value)
-  //   .subscribe({
-  //     next:(data: any) => {
-  //       this.router.navigate(["/view-product"])
-  //     },
-  //     error:(err: any) => {
-  //       console.log(err);
-  //       if (err.status === 500) {
-  //         this.msgDialog();
-  //       }
-  //     }
-  //   })
-  // }
+  async delete(docId: string) {
+    await this.firebaseService.deleteBike(docId);
+  }
 
-  // saveEditedProduct() {
-  //   this.bikesService.update(this.routeID, this.createProductForm.value)
-  //   .subscribe({
-  //     next:(data: any) => {
-  //       this.router.navigate(["/view-product"]);
-  //     },
-  //     error:(err: any) => {
-  //       console.log(err);
-  //     }
-  //   })
-  // }
+  async update() {
+    await this.firebaseService.updateBike(
+      this.routeID, 
+      this.createProductForm.get('name')?.value,
+      this.createProductForm.get('description')?.value,
+      this.createProductForm.get('rating')?.value,
+      this.createProductForm.get('price')?.value,
+      this.createProductForm.get('quantity')?.value,
+      this.createProductForm.get('type')?.value,
+      this.createProductForm.get('image')?.value,
+      this.createProductForm.get('logo')?.value );
+      this.router.navigate(["/view-product"])
+  }
 
-  // msgDialog() {
-  //   this.dialog
-  //     .confirmDialog({
-  //       title: 'ID already exists!',
-  //       message: 'Please change ID to save this product.',
-  //       confirmCaption: 'Okay',
-  //       hasCancelButton: false
-  //     })
-  //     .subscribe((yes) => {
-  //       if (yes) {
-  //         console.log('Confirmed.');
-  //       }
-  //     });
-  // }
-  
-  // initEditProductForm(id: any) {
-  //   this.bikesService.getById(this.routeID).subscribe((data: any) => {
-  //     this.createProductForm = this.fb.group({
-  //       id: [{value: data.id, disabled: true}],
-  //       name: [data.name, Validators.required],
-  //       description: [data.description],
-  //       rating: [data.rating],
-  //       price: [data.price],
-  //       quantity: [data.quantity],
-  //       type: [data.type],
-  //       image: [data.image],
-  //       logo: [data.logo]
-  //     });
-  //   });
-  // }
+  cancel() { 
+    this.router.navigate(["/view-product"])
+  }
+
+  async initEditProductForm() {
+    const docRef = doc(this.db, 'bikes', this.routeID);
+    const docSnap = await getDoc(docRef);
+    // await getDoc(docRef);
+    if (docSnap.exists()) {
+         console.log("Document data:", docSnap.data());
+        this.createProductForm = this.fb.group({
+          name: [docSnap.data()['name'], Validators.required],
+          description: [docSnap.data()['description']],
+          rating: [docSnap.data()['rating']],
+          price: [docSnap.data()['price']],
+          quantity: [docSnap.data()['quantity']],
+          type: [docSnap.data()['type']],
+          image: [docSnap.data()['image']],
+          logo: [docSnap.data()['logo']]
+        });
+      } else {
+        console.log("No such document!");
+      }
+  }
  
-  // initCreateProductForm(): void {
-  //   this.createProductForm = this.fb.group({
-  //     id: [''],
-  //     name: ['', Validators.required],
-  //     description: [''],
-  //     rating: [''],
-  //     price: [''],
-  //     quantity: [''],
-  //     type: [''],
-  //     image: ['../../../assets/bike-2.webp'],
-  //     logo: ['../../../assets/schwinn.webp'],
-  //   });
-  // }
+  initCreateProductForm(): void {
+    this.createProductForm = this.fb.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      rating: ['', Validators.required],
+      price: ['', Validators.required],
+      quantity: ['', Validators.required],
+      type: ['', Validators.required],
+      image: ['../../../assets/bike-2.webp'],
+      logo: ['../../../assets/schwinn.webp'],
+    });
+  }
 
 }
