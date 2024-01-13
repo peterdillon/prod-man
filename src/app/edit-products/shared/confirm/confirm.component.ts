@@ -15,7 +15,7 @@ export class ConfirmComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data.hasCancelButton);
-    if (this.data.hasCancelButton === true) {
+    if (this.data.hasCancelButton) {
       this.hideCancel = false;
     }
   }
