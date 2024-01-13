@@ -25,7 +25,7 @@
     {
       "name": "Specialized",
       "description": "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqu",
-      "rating": 18,
+      "rating": "186666",
       "price": "4794",
       "quantity": 130,
       "type": "all terrain",
@@ -57,36 +57,25 @@
     },
     {
       "name": "Merida",
-      "description": "",
-      "rating": "",
-      "price": "",
-      "quantity": "",
-      "type": "",
+      "description": "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.",
+      "rating": "123",
+      "price": "4545",
+      "quantity": "12",
+      "type": "Racing",
       "image": "../../../assets/bike.webp",
       "logo": "../../../assets/Merida.png",
       "id": "22"
     },
     {
       "name": "Norco",
-      "description": "12",
-      "rating": "12",
-      "price": "12",
-      "quantity": "12",
-      "type": "12",
+      "description": "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.",
+      "rating": "120",
+      "price": "1229",
+      "quantity": "120",
+      "type": "Hybrid",
       "image": "../../../assets/bike.webp",
       "logo": "../../../assets/Norco-Bicycles.png",
       "id": "12"
-    },
-    {
-      "id": "10",
-      "name": "dsfsdfsdf",
-      "description": "sdfs",
-      "rating": "dfsd",
-      "price": "sdfsd",
-      "quantity": "dsf",
-      "type": "sdf",
-      "image": "",
-      "logo": ""
     }
   ]
 }
