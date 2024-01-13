@@ -105,8 +105,8 @@ export class CreateProductComponent implements OnInit {
       price: [''],
       quantity: [''],
       type: [''],
-      image: [''],
-      logo: [''],
+      image: ['../../../assets/bike-2.webp'],
+      logo: ['../../../assets/schwinn.webp'],
     });
   }
 

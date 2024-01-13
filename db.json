@@ -14,7 +14,7 @@
     {
       "name": "Tommaso",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "rating": "1555555",
+      "rating": "155",
       "price": "799",
       "quantity": 110,
       "type": "adventure",
@@ -76,6 +76,17 @@
       "image": "../../../assets/bike.webp",
       "logo": "../../../assets/Norco-Bicycles.png",
       "id": "12"
+    },
+    {
+      "id": "10",
+      "name": "dsfsdfsdf",
+      "description": "sdfs",
+      "rating": "dfsd",
+      "price": "sdfsd",
+      "quantity": "dsf",
+      "type": "sdf",
+      "image": "",
+      "logo": ""
     }
   ]
 }
