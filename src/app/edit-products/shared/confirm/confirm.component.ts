@@ -9,12 +9,13 @@ import { ConfirmDialogData } from '../bikes.model';
 })
 export class ConfirmComponent implements OnInit {
 
-  hideCancel!: boolean;
+  hideCancel = true;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData) {}
 
   ngOnInit(): void {
-    if (!this.data.hasCancelButton) {
+    console.log(this.data.hasCancelButton);
+    if (this.data.hasCancelButton === true) {
       this.hideCancel = false;
     }
   }

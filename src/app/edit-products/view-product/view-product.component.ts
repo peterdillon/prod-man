@@ -42,6 +42,7 @@ export class ViewProductComponent {
         message: 'Do you want to permanently delete this product?',
         confirmCaption: 'Confirm',
         cancelCaption: 'Cancel',
+        hasCancelButton: true
       })
       .subscribe((confirmed) => {
         if (confirmed) {

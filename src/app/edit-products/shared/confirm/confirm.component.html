@@ -7,7 +7,7 @@
 </div>
 
 <div mat-dialog-actions [align]="'end'">
-  <button *ngIf="hideCancel" mat-raised-button [mat-dialog-close]="false">
+  <button *ngIf="!hideCancel" mat-raised-button [mat-dialog-close]="false">
       {{ data.cancelCaption }}
   </button>
   <button mat-raised-button color="primary" [mat-dialog-close]="true">

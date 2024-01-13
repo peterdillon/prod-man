@@ -16,5 +16,5 @@ export interface ConfirmDialogData {
     message: string;
     confirmCaption: string;
     cancelCaption?: string;
-    hasCancelButton?: boolean;
+    hasCancelButton: boolean;
   }
