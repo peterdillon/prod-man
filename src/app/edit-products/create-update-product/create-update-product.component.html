@@ -1,10 +1,19 @@
+
+<!-- <h1>Add bike</h1> -->
+<!-- <form class="add">
+    <label for="name">Name</label>
+    <input type="text" name="name" required [(ngModel)]="bikeDetails.name" />
+
+    <button type="button" (click)="add()">Add</button>
+</form> -->
+
 <div class="formContainer">
     <h1>{{ title }} Product</h1>
     <form [formGroup]="createProductForm">
-        <mat-form-field appearance="outline">
+        <!-- <mat-form-field appearance="outline">
             <mat-label>ID</mat-label>
             <input matInput formControlName="id">
-        </mat-form-field>
+        </mat-form-field> -->
         <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
             <input matInput formControlName="name">
@@ -39,9 +48,29 @@
         </mat-form-field>
         <br>
         <div>
+            <!-- *ngIf="newProduct" -->
             <button *ngIf="newProduct" mat-flat-button class="right group" color="primary" (click)="saveNewProduct()" type="submit" [disabled]="createProductForm.invalid">Save New</button>
-            <button *ngIf="!newProduct" mat-flat-button class="right group" color="primary" (click)="saveEditedProduct()" type="submit" [disabled]="createProductForm.invalid">Save Edited</button>
+            <button *ngIf="!newProduct" mat-flat-button class="right group" color="primary" (click)="update()" type="submit" [disabled]="createProductForm.invalid">Save Edited</button>
             <button mat-flat-button class="left secondary" (click)="cancel()">Cancel</button>
         </div>
     </form>
 </div>
+
+
+
+<!-- <h1>bike List</h1>
+<div class="show">
+    <ng-container *ngFor="let bike of bikeCollectiondata">
+        <div>
+            <label for="name-show">Name</label>
+            <input type="text" name="name-show" [value]="bike.name" required #name>
+
+            <button type="button" (click)="delete(bike.id)">Delete</button>
+            <button type="button" (click)="update(bike.id, name)">Update</button>
+        </div>
+        <br>
+    </ng-container>
+</div> -->
+
+
+ 

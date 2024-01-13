@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BikesService } from '../shared/bikes.service';
 import { DialogService } from '../shared/dialog.service';
+import { Firestore, getFirestore, doc,  DocumentData, QuerySnapshot, getDoc } from 'firebase/firestore';
+import { FirebaseService } from '../shared/firebase.service';
 
 @Component({
   selector: 'app-create-update-product',
@@ -11,100 +12,114 @@ import { DialogService } from '../shared/dialog.service';
 })
 export class CreateProductComponent implements OnInit {
 
+  db: Firestore;
   createProductForm!: FormGroup;
-  url = 'http://localhost:3000';
   routeID: any;
   title = '';
   newProduct = true;
+  bikeCollectiondata: { id: string, name: string}[] | any = [];
 
   constructor( private fb: FormBuilder,
                private router: Router,
                private route: ActivatedRoute,
-               private bikesService: BikesService,
-               private dialog: DialogService  ) { }
+               private dialog: DialogService,
+               private firebaseService: FirebaseService ) { 
+                this.db = getFirestore();
+              }
+            
+  ngOnInit(): void {
+    this.get();
+    this.firebaseService.obsr_UpdatedSnapshot.subscribe((snapshot) => {
+      this.updateBikeCollection(snapshot);
+    })
 
-  ngOnInit() {
     this.title = 'Create New';
     this.initCreateProductForm();
     if (this.route.snapshot.paramMap.get('id')) {
       this.title = 'Edit';
       this.newProduct = false;
       this.routeID = this.route.snapshot.paramMap.get('id');
-      this.initEditProductForm(this.routeID);
+      this.initEditProductForm();
     }
+  }
+
+  async saveNewProduct() {
+    await this.firebaseService.addBike(
+      this.createProductForm.get('name')?.value,
+      this.createProductForm.get('description')?.value,
+      this.createProductForm.get('rating')?.value,
+      this.createProductForm.get('price')?.value,
+      this.createProductForm.get('quantity')?.value,
+      this.createProductForm.get('type')?.value,
+      this.createProductForm.get('image')?.value,
+      this.createProductForm.get('logo')?.value
+      );
+      this.router.navigate(["/view-product"]);
+  }
+
+  async get() {
+    const snapshot = await this.firebaseService.getBikes();
+    this.updateBikeCollection(snapshot);
+  }
+
+  updateBikeCollection(snapshot: QuerySnapshot<DocumentData>) {
+    this.bikeCollectiondata = [];
+    snapshot.docs.forEach((Bike) => {
+      this.bikeCollectiondata.push({ ...Bike.data(), id: Bike.id });
+    })
+  }
+
+  async delete(docId: string) {
+    await this.firebaseService.deleteBike(docId);
+  }
+
+  async update() {
+    await this.firebaseService.updateBike(
+      this.routeID, 
+      this.createProductForm.get('name')?.value,
+      this.createProductForm.get('description')?.value,
+      this.createProductForm.get('rating')?.value,
+      this.createProductForm.get('price')?.value,
+      this.createProductForm.get('quantity')?.value,
+      this.createProductForm.get('type')?.value,
+      this.createProductForm.get('image')?.value,
+      this.createProductForm.get('logo')?.value );
+      this.router.navigate(["/view-product"])
   }
 
   cancel() { 
     this.router.navigate(["/view-product"])
   }
 
-  saveNewProduct() {
-    this.bikesService.create(this.createProductForm.value)
-    .subscribe({
-      next:(data: any) => {
-        this.router.navigate(["/view-product"])
-      },
-      error:(err: any) => {
-        console.log(err);
-        if (err.status === 500) {
-          this.msgDialog();
-        }
+  async initEditProductForm() {
+    const docRef = doc(this.db, 'bikes', this.routeID);
+    const docSnap = await getDoc(docRef);
+    // await getDoc(docRef);
+    if (docSnap.exists()) {
+         console.log("Document data:", docSnap.data());
+        this.createProductForm = this.fb.group({
+          name: [docSnap.data()['name'], Validators.required],
+          description: [docSnap.data()['description']],
+          rating: [docSnap.data()['rating']],
+          price: [docSnap.data()['price']],
+          quantity: [docSnap.data()['quantity']],
+          type: [docSnap.data()['type']],
+          image: [docSnap.data()['image']],
+          logo: [docSnap.data()['logo']]
+        });
+      } else {
+        console.log("No such document!");
       }
-    })
-  }
-
-  saveEditedProduct() {
-    this.bikesService.update(this.routeID, this.createProductForm.value)
-    .subscribe({
-      next:(data: any) => {
-        this.router.navigate(["/view-product"]);
-      },
-      error:(err: any) => {
-        console.log(err);
-      }
-    })
-  }
-
-  msgDialog() {
-    this.dialog
-      .confirmDialog({
-        title: 'ID already exists!',
-        message: 'Please change ID to save this product.',
-        confirmCaption: 'Okay',
-        hasCancelButton: false
-      })
-      .subscribe((yes) => {
-        if (yes) {
-          console.log('Confirmed.');
-        }
-      });
-  }
-  
-  initEditProductForm(id: any) {
-    this.bikesService.getById(this.routeID).subscribe((data: any) => {
-      this.createProductForm = this.fb.group({
-        id: [{value: data.id, disabled: true}],
-        name: [data.name, Validators.required],
-        description: [data.description],
-        rating: [data.rating],
-        price: [data.price],
-        quantity: [data.quantity],
-        type: [data.type],
-        image: [data.image],
-        logo: [data.logo]
-      });
-    });
   }
  
   initCreateProductForm(): void {
     this.createProductForm = this.fb.group({
-      id: [''],
       name: ['', Validators.required],
-      description: [''],
-      rating: [''],
-      price: [''],
-      quantity: [''],
-      type: [''],
+      description: ['', Validators.required],
+      rating: ['', Validators.required],
+      price: ['', Validators.required],
+      quantity: ['', Validators.required],
+      type: ['', Validators.required],
       image: ['../../../assets/bike-2.webp'],
       logo: ['../../../assets/schwinn.webp'],
     });

@@ -23,26 +23,15 @@
       "id": 1
     },
     {
-      "name": "Specialized",
-      "description": "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqu",
-      "rating": "186666",
-      "price": "4794",
-      "quantity": 130,
-      "type": "all terrain",
-      "image": "../../../assets/bike.webp",
-      "logo": "../../../assets/Specialized.png",
-      "id": 2
-    },
-    {
       "name": "SCOTT",
-      "id": 4,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "rating": 6,
       "price": 659,
-      "quantity": 10,
+      "quantity": "1000",
       "type": "hybrid",
       "image": "../../../assets/bike.webp",
-      "logo": "../../../assets/SCOTT.png"
+      "logo": "../../../assets/SCOTT.png",
+      "id": 4
     },
     {
       "name": "Rocky Mountain Bicycles",

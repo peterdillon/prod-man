@@ -4,6 +4,10 @@ h1 {
 }
 p.desc {
     text-transform: capitalize;
+    min-height: 4rem;
+}
+p.type {
+    text-transform: capitalize;
 }
 .mat-mdc-card  {
     background-color: #efefef;
@@ -46,7 +50,6 @@ mat-card-subtitle {
 
   .id-ct {
     margin-left: .5rem;
-    text-align: center;
   }
 
 .card-header-image {
