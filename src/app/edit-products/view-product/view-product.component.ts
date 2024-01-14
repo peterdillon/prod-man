@@ -38,18 +38,19 @@ export class ViewProductComponent {
       this.updateBikeCollection(snapshot);
     })
   }
-  //================================
+ 
   async get() {
     const snapshot = await this.firebaseService.getBikes();
     this.updateBikeCollection(snapshot);
   }
+  
   updateBikeCollection(snapshot: QuerySnapshot<DocumentData>) {
     this.bikeCollectiondata = [];
     snapshot.docs.forEach((Bike) => {
       this.bikeCollectiondata.push({ ...Bike.data(), id: Bike.id });
     })
   }
-  // -------------------------------
+  
   editProduct(id:string) {
     this.router.navigate(["/edit-product/" + id])
   }

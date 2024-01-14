@@ -4,13 +4,13 @@
   <div class="card-wrapper">
     <mat-card *ngFor="let bike of bikeCollectiondata" class="card-ct">
         <mat-card-header>
-          <div [ngStyle]="{backgroundImage:'url('+bike.logo +')'}" mat-card-avatar class="card-header-image"></div>
+          <div [ngStyle]="{ backgroundImage: 'url('+ bike.logo +')'}" mat-card-avatar class="card-header-image"></div>
           <mat-card-title>{{ bike.name }} </mat-card-title>
-          <mat-card-subtitle>Qty in stock: {{ bike.quantity }} - Rating: {{ bike.rating }}</mat-card-subtitle>
+          <mat-card-subtitle>{{ bike.type }} - ${{ bike.price }}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="{{ bike.image }}" alt="Product image">
         <mat-card-content>
-          <p class="type">{{ bike.type }} - ${{ bike.price }}</p>
+          <p class="type">In stock: <b>{{ bike.quantity }}</b> &nbsp; &nbsp; Rating: {{ bike.rating }}</p>
           <p class="desc">{{ bike.description }}</p>
         </mat-card-content>
         <mat-card-actions [align]="'end'">

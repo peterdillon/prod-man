@@ -10,7 +10,6 @@ export interface Bikes {
     logo: string;
 }
 
-
 export interface ConfirmDialogData {
     title: string;
     message: string;

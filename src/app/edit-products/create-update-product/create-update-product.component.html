@@ -1,19 +1,6 @@
-
-<!-- <h1>Add bike</h1> -->
-<!-- <form class="add">
-    <label for="name">Name</label>
-    <input type="text" name="name" required [(ngModel)]="bikeDetails.name" />
-
-    <button type="button" (click)="add()">Add</button>
-</form> -->
-
 <div class="formContainer">
     <h1>{{ title }} Product</h1>
     <form [formGroup]="createProductForm">
-        <!-- <mat-form-field appearance="outline">
-            <mat-label>ID</mat-label>
-            <input matInput formControlName="id">
-        </mat-form-field> -->
         <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
             <input matInput formControlName="name">
