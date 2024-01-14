@@ -6,8 +6,9 @@ p.desc {
     text-transform: capitalize;
     min-height: 4rem;
 }
-p.type {
+p.type, mat-card-subtitle {
     text-transform: capitalize;
+    color: #777 !important;
 }
 .mat-mdc-card  {
     background-color: #efefef;

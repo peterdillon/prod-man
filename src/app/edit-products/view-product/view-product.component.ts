@@ -13,10 +13,6 @@ import { FirebaseService } from '../shared/firebase.service';
 })
 export class ViewProductComponent {
 
-  bikes: Bikes[] = [];
-  bikeDetails = {
-    name: ''
-  }
   bikeCollectiondata: { 
     id: string;
     name: string;
@@ -43,7 +39,7 @@ export class ViewProductComponent {
     const snapshot = await this.firebaseService.getBikes();
     this.updateBikeCollection(snapshot);
   }
-  
+
   updateBikeCollection(snapshot: QuerySnapshot<DocumentData>) {
     this.bikeCollectiondata = [];
     snapshot.docs.forEach((Bike) => {
