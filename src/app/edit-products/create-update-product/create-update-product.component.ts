@@ -120,7 +120,7 @@ export class CreateProductComponent implements OnInit {
       price: ['', Validators.required],
       quantity: ['', Validators.required],
       type: ['', Validators.required],
-      image: ['../../../assets/bike-2.webp'],
+      image: ['../../../assets/bike-2.png'],
       logo: ['../../../assets/schwinn.webp'],
     });
   }
