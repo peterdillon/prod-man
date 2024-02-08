@@ -14,7 +14,6 @@ export class ConfirmComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData) {}
 
   ngOnInit(): void {
-    console.log(this.data.hasCancelButton);
     if (this.data.hasCancelButton) {
       this.hideCancel = false;
     }

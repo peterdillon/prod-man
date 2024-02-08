@@ -3,7 +3,9 @@ h1 {
     margin: 1rem 2rem;
 }
 p.desc {
-    text-transform: capitalize;
+    &::first-letter {
+        text-transform: capitalize;
+    }
     min-height: 4rem;
 }
 p.type, mat-card-subtitle {
@@ -24,6 +26,7 @@ mat-card-subtitle {
 }
 .card-wrapper {
     padding-bottom: 4rem;
+    // scroll-padding-bottom: 2rem; <- new css prop not working?
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;

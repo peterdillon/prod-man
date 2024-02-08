@@ -96,16 +96,15 @@ export class CreateProductComponent implements OnInit {
     const docSnap = await getDoc(docRef);
     // await getDoc(docRef);
     if (docSnap.exists()) {
-         console.log("Document data:", docSnap.data());
         this.createProductForm = this.fb.group({
           name: [docSnap.data()['name'], Validators.required],
-          description: [docSnap.data()['description']],
-          rating: [docSnap.data()['rating']],
-          price: [docSnap.data()['price']],
-          quantity: [docSnap.data()['quantity']],
-          type: [docSnap.data()['type']],
-          image: [docSnap.data()['image']],
-          logo: [docSnap.data()['logo']]
+          description: [docSnap.data()['description'], Validators.required],
+          rating: [docSnap.data()['rating'], Validators.required],
+          price: [docSnap.data()['price'], Validators.required],
+          quantity: [docSnap.data()['quantity'], Validators.required],
+          type: [docSnap.data()['type'], Validators.required],
+          image: [docSnap.data()['image'], Validators.required],
+          logo: [docSnap.data()['logo'], Validators.required]
         });
       } else {
         console.log("No such document!");
@@ -120,8 +119,8 @@ export class CreateProductComponent implements OnInit {
       price: ['', Validators.required],
       quantity: ['', Validators.required],
       type: ['', Validators.required],
-      image: ['../../../assets/bike-2.png'],
-      logo: ['../../../assets/schwinn.webp'],
+      image: ['../../../assets/bike-2.png', Validators.required],
+      logo: ['../../../assets/schwinn.webp', Validators.required],
     });
   }
 

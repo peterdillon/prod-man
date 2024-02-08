@@ -3,7 +3,7 @@ import { Bikes } from '../shared/bikes.model';
 import { BikesService } from '../shared/bikes.service';
 import { Router } from '@angular/router';
 import { DialogService } from '../shared/dialog.service';
-import { DocumentData, QuerySnapshot } from '@firebase/firestore';
+import { DocumentData, QuerySnapshot, orderBy } from '@firebase/firestore';
 import { FirebaseService } from '../shared/firebase.service';
 
 @Component({
