@@ -14,7 +14,7 @@ export class AppComponent {
   constructor( private weatherService: WeatherService ) {}
 
   ngOnInit() {
-  this.getWeather();
+    this.getWeather();
   }
 
   getWeather(): void {
